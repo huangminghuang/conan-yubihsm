@@ -16,7 +16,7 @@ class YubihsmConan(ConanFile):
     options = {"shared": [True, False]}
     default_options = "shared=False"
     
-    requires = 'OpenSSL/1.1.1b@conan/stable','libcurl/7.64.1@bincrafters/stable','libusb/1.0.22@bincrafters/stable'
+    requires = 'OpenSSL/1.1.1c@conan/stable','libcurl/7.64.1@bincrafters/stable','libusb/1.0.22@bincrafters/stable'
     generators = "cmake"
     no_copy_source = True
     build_policy = "missing"
@@ -24,6 +24,7 @@ class YubihsmConan(ConanFile):
     def configure(self):
         # Because this is pure C
         del self.settings.compiler.libcxx
+        self.options["libusb"].enable_udev = False
             
     def source(self):
         tools.get("https://github.com/Yubico/yubihsm-shell/archive/{0}.tar.gz".format(self.version))
