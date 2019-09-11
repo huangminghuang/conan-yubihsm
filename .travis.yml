@@ -1,7 +1,7 @@
 
 env:
    global:
-     - CONAN_REFERENCE: "yubihsim/2.0.1"
+     - CONAN_REFERENCE: "yubihsm/2.0.1"
      - CONAN_USERNAME: "huangminghuang"
      - CONAN_LOGIN_USERNAME: "huangminghuang"
      - CONAN_CHANNEL: "stable"

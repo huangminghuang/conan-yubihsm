@@ -2,7 +2,7 @@
 
 | Bintray | Linux & macOS |
 |:--------:|:---------:|:-----------------:|
-|[![Download](https://api.bintray.com/packages/huangminghuang/conan/mongo-c-driver%3Ahuangminghuang/images/download.svg) ](https://bintray.com/huangminghuang/conan/mongo-c-driver%3Ahuangminghuang/_latestVersion)|[![Build Status](https://travis-ci.com/huangminghuang/conan-mongo-c-driver.svg?branch=master)](https://travis-ci.com/huangminghuang/conan-mongo-c-driver)|
+|[![Download](https://api.bintray.com/packages/huangminghuang/conan/yubihsm%3Ahuangminghuang/images/download.svg) ](https://bintray.com/huangminghuang/conan/yubihsm%3Ahuangminghuang/_latestVersion)|[![Build Status](https://travis-ci.com/huangminghuang/conan-yubihsm.svg?branch=master)](https://travis-ci.com/huangminghuang/conan-yubihsm)|
 
 
 ## Basic setup
