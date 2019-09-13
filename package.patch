@@ -1,17 +1,19 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c20d9b6..c4de819 100644
+index c20d9b6..edcf242 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -75,7 +75,7 @@ if (CMAKE_C_COMPILER_ID STREQUAL GNU)
+@@ -74,10 +74,6 @@ if (CMAKE_C_COMPILER_ID STREQUAL GNU)
+   if (CMAKE_C_COMPILER_VERSION VERSION_GREATER 6.0)
      set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -flto")
    endif ()
- else ()
+-else ()
 -  if (CMAKE_C_COMPILER_VERSION VERSION_GREATER 7.0)
-+  if (CMAKE_C_COMPILER_VERSION VERSION_GREATER 7.0 AND NOT ENABLE_STATIC)
-     set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -flto")
-   endif ()
+-    set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -flto")
+-  endif ()
  endif ()
-@@ -159,13 +159,8 @@ else()
+ 
+ if (CMAKE_C_COMPILER_ID STREQUAL AppleClang)
+@@ -159,13 +155,8 @@ else()
      add_definitions (-DHAVE_EXPLICIT_BZERO)
    endif ()
  
