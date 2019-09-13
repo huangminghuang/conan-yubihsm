@@ -24,7 +24,8 @@ class YubihsmConan(ConanFile):
     def configure(self):
         # Because this is pure C
         del self.settings.compiler.libcxx
-        self.options["libusb"].enable_udev = False
+        if self.settings.os == "Linux":
+            self.options["libusb"].enable_udev = False
             
     def source(self):
         tools.get("https://github.com/Yubico/yubihsm-shell/archive/{0}.tar.gz".format(self.version))
