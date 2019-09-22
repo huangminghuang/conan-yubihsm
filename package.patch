@@ -1,5 +1,5 @@
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index c20d9b6..edcf242 100644
+index c20d9b6..80a3870 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
 @@ -74,10 +74,6 @@ if (CMAKE_C_COMPILER_ID STREQUAL GNU)
@@ -13,10 +13,23 @@ index c20d9b6..edcf242 100644
  endif ()
  
  if (CMAKE_C_COMPILER_ID STREQUAL AppleClang)
-@@ -159,13 +155,8 @@ else()
-     add_definitions (-DHAVE_EXPLICIT_BZERO)
+@@ -146,26 +142,23 @@ else()
+   if (NOT CMAKE_C_COMPILER_ID MATCHES Clang)
+     set (CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wl,-z,relro,-z,now")
    endif ()
- 
+-
+-  include(CheckFunctionExists)
+-
+-  check_function_exists(memset_s HAVE_MEMSET_S)
+-  if (HAVE_MEMSET_S)
+-    add_definitions (-DHAVE_MEMSET_S)
+-  endif()
+-
+-  check_function_exists(explicit_bzero HAVE_EXPLICIT_BZERO)
+-  if (HAVE_EXPLICIT_BZERO)
+-    add_definitions (-DHAVE_EXPLICIT_BZERO)
+-  endif ()
+-
 -  find_package (PkgConfig REQUIRED)
 -  pkg_search_module (LIBCRYPTO REQUIRED libcrypto)
 -  if(NOT BUILD_ONLY_LIB)
@@ -24,6 +37,21 @@ index c20d9b6..edcf242 100644
 -  endif()
 -  pkg_search_module (LIBCURL REQUIRED libcurl)
 -  pkg_search_module (LIBUSB REQUIRED libusb-1.0)
++  
++  if (APPLE)
++    include(CheckFunctionExists)
++
++    check_function_exists(memset_s HAVE_MEMSET_S)
++    if (HAVE_MEMSET_S)
++      add_definitions (-DHAVE_MEMSET_S)
++    endif()
++
++    check_function_exists(explicit_bzero HAVE_EXPLICIT_BZERO)
++    if (HAVE_EXPLICIT_BZERO)
++      add_definitions (-DHAVE_EXPLICIT_BZERO)
++    endif ()
++  endif(APPLE)
++
 +  include(${CMAKE_BINARY_DIR}/conanbuildinfo.cmake)
 +  conan_basic_setup(TARGETS)
  endif()
